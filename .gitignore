@@ -1,0 +1,11 @@
+*/target
+*.iml
+/.idea
+/venv
+*.class
+target/
+.project
+.settings/
+.classpath
+*.pyc
+/test-output

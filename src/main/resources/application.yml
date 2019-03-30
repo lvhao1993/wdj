@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: wdj
+  datasource:
+      name: wdj
+      url: jdbc:oracle:thin:@10.128.122.105:1521:orcl
+      username: DAVINCI_PORTAL
+      password: 12345678
+      driver-class-name: oracle.jdbc.driver.OracleDriver
+server:
+  port: 8080
