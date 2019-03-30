@@ -18,7 +18,7 @@ public class DemoController {
 
     @RequestMapping(value = "/h",method = RequestMethod.GET)
     public String test(@RequestParam String id){
-
+        System.out.println("nni");
         System.out.println(id);
         return "吴大姐今年---"+id+"---岁了";
     }
