@@ -72,5 +72,13 @@
         </set>
         WHERE ID = #{id,jdbcType=VARCHAR}
     </update>
+    <select id="select" parameterType="wly.entity.lh.Person" resultMap="BaseResultMap">
+      SELECT
+      <include refid="Base_Column_List"/>
+      FROM PERSON_TEST
+        WHERE 1=1
+        <if test="name != null"> AND NAME= #{name,jdbcType=VARCHAR}</if>
+        <if test="age != null"> AND AGE= #{age,jdbcType=INTEGER}</if>
+    </select>
 </mapper>
 

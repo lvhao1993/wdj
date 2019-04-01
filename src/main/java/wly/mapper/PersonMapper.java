@@ -34,4 +34,6 @@ public interface PersonMapper {
      * @return
      */
     int updateByPrimaryKeySelective( Person person);
+
+    List<Person> select(Person person);
 }

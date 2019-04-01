@@ -1,6 +1,8 @@
 package wly.service;
 
 import java.util.List;
+
+import wly.common.WdjResult;
 import wly.entity.lh.Person;
 
 /**
@@ -13,7 +15,7 @@ public interface PersonService{
      * @param person
      * @return
      */
-    int insert(Person person);
+    Person insert(Person person);
     /**
      * 选择增
      * @param person
@@ -32,4 +34,12 @@ public interface PersonService{
      * @return
      */
     int updateByPrimaryKeySelective(Person person);
+
+
+    /**
+     * 查询
+     * @param person
+     * @return
+     */
+    List<Person> select(Person person);
 }
