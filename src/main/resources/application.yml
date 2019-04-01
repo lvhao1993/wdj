@@ -7,5 +7,9 @@ spring:
       username: DAVINCI_PORTAL
       password: 12345678
       driver-class-name: oracle.jdbc.driver.OracleDriver
+mybatis:
+  type-aliases-package:
+  mapper-locations:
+    - classpath:mybatis/*.xml
 server:
   port: 8080
