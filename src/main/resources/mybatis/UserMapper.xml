@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="wly.mapper.UserMapper">
+    <!--auto generated Code-->
+    <resultMap id="BaseResultMap" type="wly.entity.wuluyao.User">
+        <result column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="NAME" property="name" jdbcType="VARCHAR"/>
+        <result column="AGE" property="age" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="Base_Column_List">
+        ID,
+        NAME,
+        AGE
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" parameterType="wly.entity.wuluyao.User">
+        INSERT INTO PERSON_TEST (
+            ID,
+            NAME,
+            AGE
+        ) VALUES (
+            #{id,jdbcType=VARCHAR},
+            #{name,jdbcType=VARCHAR},
+            #{age,jdbcType=INTEGER}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" parameterType="wly.entity.wuluyao.User">
+        INSERT INTO PERSON_TEST
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id!=null"> ID,</if>
+            <if test="name!=null"> NAME,</if>
+            <if test="age!=null"> AGE,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id!=null">#{id,jdbcType=VARCHAR},
+            </if>
+            <if test="name!=null">#{name,jdbcType=VARCHAR},
+            </if>
+            <if test="age!=null">#{age,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO PERSON_TEST (
+        ID,
+        NAME,
+        AGE
+        )VALUES
+        <foreach collection="persons" item="person" index="index" separator=",">
+            (
+            #{id,jdbcType=VARCHAR},
+            #{name,jdbcType=VARCHAR},
+            #{age,jdbcType=INTEGER}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="updateByPrimaryKeySelective" parameterType="wly.entity.wuluyao.User">
+        UPDATE PERSON_TEST
+        <set>
+            <if test="name != null"> NAME= #{name,jdbcType=VARCHAR},</if>
+            <if test="age != null"> AGE= #{age,jdbcType=INTEGER}</if>
+        </set>
+        WHERE ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <select id="select" parameterType="wly.entity.lh.Person" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM PERSON_TEST
+        WHERE 1=1
+        <if test="name != null"> AND NAME= #{name,jdbcType=VARCHAR}</if>
+        <if test="age != null"> AND AGE= #{age,jdbcType=INTEGER}</if>
+    </select>
+
+
+
+</mapper>
+
