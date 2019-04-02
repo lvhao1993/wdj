@@ -35,5 +35,17 @@ public interface PersonMapper {
      */
     int updateByPrimaryKeySelective( Person person);
 
+    /**
+     * 查询
+     * @param person
+     * @return
+     */
     List<Person> select(Person person);
+
+    /**
+     * 删除
+     * @param person
+     * @return
+     */
+    int delPerson(Person person);
 }

@@ -5,6 +5,8 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.util.CollectionUtils;
+import wly.common.WdjResult;
 import wly.entity.lh.Person;
 import wly.mapper.PersonMapper;
 import wly.service.PersonService;
@@ -20,10 +22,17 @@ public class PersonServiceImpl implements PersonService{
     private PersonMapper personMapper;
 
     @Override
-    public Person insert(Person person){
-        person.setId(this.generateUUID());
-        personMapper.insert(person);
-        return person;
+    public WdjResult insert(Person person){
+        //判断name是否重复
+        if(checkName(person)){
+            person.setId(this.generateUUID());
+            personMapper.insert(person);
+            return WdjResult.success(person);
+        }else{
+            return WdjResult.fail("555","存在相同的名字,重新输入");
+        }
+
+
     }
 
     @Override
@@ -47,6 +56,34 @@ public class PersonServiceImpl implements PersonService{
         return personMapper.select(person);
     }
 
+    @Override
+    public WdjResult delPerson(Person person) {
+        personMapper.delPerson(person);
+        return WdjResult.success(true);
+    }
+
+    @Override
+    public WdjResult editPerson(Person person) {
+        personMapper.updateByPrimaryKeySelective(person);
+        return WdjResult.success(true);
+    }
+
+    /**
+     * 判断name是否已经存在 （true：不存在  false：存在）
+     * @param person
+     * @return
+     */
+    public boolean checkName(Person person){
+        Person checkPerson = new Person();
+        checkPerson.setName(person.getName());
+        List<Person> list = personMapper.select(checkPerson);
+        if(CollectionUtils.isEmpty(list)){
+            return true;
+        }else {
+            return false;
+        }
+
+    }
     /**
      * 随机生成UUID
      * @return

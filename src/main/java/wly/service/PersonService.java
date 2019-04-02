@@ -15,7 +15,7 @@ public interface PersonService{
      * @param person
      * @return
      */
-    Person insert(Person person);
+    WdjResult insert(Person person);
     /**
      * 选择增
      * @param person
@@ -42,4 +42,18 @@ public interface PersonService{
      * @return
      */
     List<Person> select(Person person);
+
+    /**
+     * 删除人员
+     * @param person
+     * @return
+     */
+    WdjResult delPerson(Person person);
+
+    /**
+     * 修改人员信息
+     * @param person
+     * @return
+     */
+    WdjResult editPerson(Person person);
 }

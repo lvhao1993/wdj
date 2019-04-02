@@ -80,5 +80,11 @@
         <if test="name != null"> AND NAME= #{name,jdbcType=VARCHAR}</if>
         <if test="age != null"> AND AGE= #{age,jdbcType=INTEGER}</if>
     </select>
+
+
+    <delete id="delPerson" parameterType="wly.entity.lh.Person">
+        DELETE FROM PERSON_TEST
+        WHERE ID = #{id,jdbcType=VARCHAR}
+    </delete>
 </mapper>
 

@@ -5,7 +5,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * 启动类
@@ -13,7 +12,6 @@ import org.springframework.context.annotation.Configuration;
  * @date 2019/03/30
  */
 @SpringBootApplication
-@Configuration
 @EnableAutoConfiguration
 @ComponentScan(basePackages = {"wly"})
 @MapperScan("wly.mapper")
