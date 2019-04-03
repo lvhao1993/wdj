@@ -50,11 +50,5 @@ public interface UserMapper {
 
     List<User> select(User user);
 
-    /**
-     * 删除
-     * @param user
-     * @return
-     */
 
-    int delUser(User user);
 }
