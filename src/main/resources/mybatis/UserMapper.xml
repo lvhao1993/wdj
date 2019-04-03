@@ -17,7 +17,7 @@
 
     <!--auto generated Code-->
     <insert id="insert" parameterType="wly.entity.wuluyao.User">
-        INSERT INTO PERSON_TEST (
+        INSERT INTO USER_TEST (
             ID,
             NAME,
             AGE
@@ -30,7 +30,7 @@
 
     <!--auto generated Code-->
     <insert id="insertSelective" parameterType="wly.entity.wuluyao.User">
-        INSERT INTO PERSON_TEST
+        INSERT INTO USER_TEST
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id!=null"> ID,</if>
             <if test="name!=null"> NAME,</if>
@@ -49,7 +49,7 @@
 
     <!--auto generated Code-->
     <insert id="insertList">
-        INSERT INTO PERSON_TEST (
+        INSERT INTO USER_TEST (
         ID,
         NAME,
         AGE
@@ -65,17 +65,17 @@
 
     <!--auto generated Code-->
     <update id="updateByPrimaryKeySelective" parameterType="wly.entity.wuluyao.User">
-        UPDATE PERSON_TEST
+        UPDATE USER_TEST
         <set>
             <if test="name != null"> NAME= #{name,jdbcType=VARCHAR},</if>
             <if test="age != null"> AGE= #{age,jdbcType=INTEGER}</if>
         </set>
         WHERE ID = #{id,jdbcType=VARCHAR}
     </update>
-    <select id="select" parameterType="wly.entity.lh.Person" resultMap="BaseResultMap">
+    <select id="select"  parameterType="wly.entity.wuluyao.User" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List"/>
-        FROM PERSON_TEST
+        FROM USER_TEST
         WHERE 1=1
         <if test="name != null"> AND NAME= #{name,jdbcType=VARCHAR}</if>
         <if test="age != null"> AND AGE= #{age,jdbcType=INTEGER}</if>

@@ -3,16 +3,16 @@ package wly.service.impl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import javax.annotation.Resource;
-import java.util.List;
-import java.util.UUID;
-
 import org.springframework.util.CollectionUtils;
 import wly.common.MyFirstAnnotation;
 import wly.common.WdjResult;
+import wly.common.utils.WdjUtil;
 import wly.entity.lh.Person;
 import wly.mapper.PersonMapper;
 import wly.service.PersonService;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 人
@@ -30,7 +30,7 @@ public class PersonServiceImpl implements PersonService{
     public WdjResult insert(Person person){
         //判断name是否重复
         if(checkName(person)){
-            person.setId(this.generateUUID());
+            person.setId(WdjUtil.generateUUID());
             personMapper.insert(person);
             logger.info("新增成功");
             return WdjResult.success(person);
@@ -96,13 +96,5 @@ public class PersonServiceImpl implements PersonService{
         }
 
     }
-    /**
-     * 随机生成UUID
-     * @return
-     */
-    private String generateUUID() {
-        String uuid = UUID.randomUUID().toString();
-        //去掉“-”符号
-        return uuid.replaceAll("-", "");
-    }
+
 }

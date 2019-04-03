@@ -7,12 +7,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import wly.common.WdjResult;
 import wly.entity.wuluyao.User;
 import wly.service.UserService;
-import wly.service.impl.UserServicelmpl;
-
-import javax.annotation.PostConstruct;
 
 /**
  * @ClassName UserController
@@ -21,6 +20,8 @@ import javax.annotation.PostConstruct;
  * @Date 2019/4/3 16:32
  * @Version 1.0
  **/
+@RestController
+@RequestMapping("/user")
 public class UserController {
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);

@@ -26,7 +26,7 @@ public class WlyConfiguration {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("wuluyao.controller"))
+                .apis(RequestHandlerSelectors.basePackage("wly.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }

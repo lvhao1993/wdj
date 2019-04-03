@@ -4,9 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import wly.common.MyFirstAnnotation;
 import wly.common.WdjResult;
-import wly.entity.lh.Person;
 import wly.entity.wuluyao.User;
 import wly.mapper.UserMapper;
 import wly.service.UserService;
@@ -30,7 +28,6 @@ public class UserServicelmpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    @MyFirstAnnotation(value = "----------开始新增--------",groups = User.class,argsIndexs = 0)
     public WdjResult insert(User user) {
         if (checkName(user)){
             user.setId(this.generateUUID());
@@ -53,27 +50,24 @@ public class UserServicelmpl implements UserService {
     }
 
     @Override
-    @MyFirstAnnotation(value = "------开始编辑---------")
     public int updateByPrimaryKeySelective(User user) {
         return userMapper.updateByPrimaryKeySelective(user);
     }
 
     @Override
-    @MyFirstAnnotation(value = "------开始查询---------",groups = Person.class)
     public List<User> select(User user) {
         return userMapper.select(user);
     }
 
     @Override
-    @MyFirstAnnotation(value = "------开始删除---------")
     public WdjResult delUser(User user) {
-        userMapper.delUser(user);
+        //TODO
+       // userMapper.delUser(user);
         logger.info("删除成功");
         return WdjResult.success(true);
     }
 
     @Override
-    @MyFirstAnnotation(value = "------开始编辑---------")
     public WdjResult editUser(User user) {
         userMapper.updateByPrimaryKeySelective(user);
         logger.info("编辑成功");
@@ -86,9 +80,11 @@ public class UserServicelmpl implements UserService {
      * @return
      */
     public boolean checkName(User user){
-        User checkUser = new User ();
+        User checkUser = new User();
         checkUser.setName(user.getName());
         List<User> list = userMapper.select(checkUser);
+
+
         if(CollectionUtils.isEmpty(list)){
             return true;
         }else {

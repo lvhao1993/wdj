@@ -1,7 +1,8 @@
 package wly.mapper;
 
-import java.util.List;
 import wly.entity.wuluyao.User;
+
+import java.util.List;
 
 /**
  * @ClassName UserMapper
@@ -49,6 +50,4 @@ public interface UserMapper {
      */
 
     List<User> select(User user);
-
-
 }

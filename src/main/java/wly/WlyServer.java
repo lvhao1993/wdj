@@ -15,7 +15,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @SpringBootApplication
 @EnableAutoConfiguration
 @ComponentScan(basePackages = {"wly"})
-@MapperScan("wuluyao.mapper")
+@MapperScan("wly.mapper")
 @EnableAsync
 public class WlyServer {
 
