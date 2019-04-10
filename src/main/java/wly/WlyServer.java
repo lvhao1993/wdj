@@ -1,11 +1,15 @@
 package wly;
 
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableAsync;
+import wly.controller.webmagic.ToutiaoStart;
 
 /**
  * 启动类
@@ -17,11 +21,19 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @ComponentScan(basePackages = {"wly"})
 @MapperScan("wly.mapper")
 @EnableAsync
-public class WlyServer {
+public class WlyServer implements ApplicationRunner {
+
+    @Autowired
+    private ToutiaoStart toutiaoStart;
 
     public static void main(String[] args) {
         System.out.println("开始启动...");
         SpringApplication.run(WlyServer.class,args);
         System.out.println("已启动...");
     }
-}  
+
+    @Override
+    public void run(ApplicationArguments applicationArguments) throws Exception {
+        toutiaoStart.start();
+    }
+}

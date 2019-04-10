@@ -41,6 +41,13 @@ public class MyFirstAspect {
         Method method = methodSignature.getMethod();
         MyFirstAnnotation annotation = method.getAnnotation(MyFirstAnnotation.class);
         LOGGER.info("正在进行对类{}中方法{}进行增删改查开始", joinPoint.getTarget().getClass().getName(), method.getName());
+
+        //
+        Class<?>[]  groupsClass = annotation.groups();
+
+
+
+
         Object[] args = joinPoint.getArgs();
         Object arg = args[0];
         Person person = (Person)arg;
