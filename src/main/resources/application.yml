@@ -7,9 +7,23 @@ spring:
       username: wdj_test
       password: 123456
       driver-class-name: oracle.jdbc.driver.OracleDriver
+ #redis基本参数配置
+  redis:
+    database: 1
+    host: 10.128.122.105
+    password: Jiz0cCwyAg
+    pool:
+      max-idle: 8
+      min-idle: 0
+      max-active: 8
+      max-wait: 1
+    timeout: 5000
 mybatis:
   type-aliases-package:
   mapper-locations:
     - classpath:mybatis/*.xml
 server:
-  port: 8080
+  port: 8088
+user:
+  userName: 18900000103
+  passWord: 15221993540

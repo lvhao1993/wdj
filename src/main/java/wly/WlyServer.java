@@ -9,7 +9,11 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import wly.controller.webmagic.ToutiaoStart;
+import wly.order.OrderingMealsService;
+
+import javax.annotation.Resource;
 
 /**
  * 启动类
@@ -21,10 +25,14 @@ import wly.controller.webmagic.ToutiaoStart;
 @ComponentScan(basePackages = {"wly"})
 @MapperScan("wly.mapper")
 @EnableAsync
+@EnableScheduling
 public class WlyServer implements ApplicationRunner {
 
     @Autowired
     private ToutiaoStart toutiaoStart;
+
+    @Resource
+    private OrderingMealsService orderingMealsService;
 
     public static void main(String[] args) {
         System.out.println("开始启动...");
@@ -34,6 +42,7 @@ public class WlyServer implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments applicationArguments) throws Exception {
-        toutiaoStart.start();
+        //toutiaoStart.start();
+        //orderingMealsService.startOrderingMeals();
     }
 }

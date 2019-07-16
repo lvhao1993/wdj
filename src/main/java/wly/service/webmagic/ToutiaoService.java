@@ -1,4 +1,18 @@
+package wly.service.webmagic;/*
 package wly.service.webmagic;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import us.codecraft.webmagic.Page;
+import us.codecraft.webmagic.Site;
+import us.codecraft.webmagic.processor.PageProcessor;
+import us.codecraft.webmagic.selector.Html;
+import wly.common.webmagic.MyPic;
+
+import java.util.List;
+import java.util.Random;
+
+*/
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,6 +29,7 @@ import java.util.Random;
  * @author lvhao
  * @date 2019/04/10
  */
+
 @Component
 public class ToutiaoService implements PageProcessor {
 	
@@ -34,13 +49,13 @@ public class ToutiaoService implements PageProcessor {
 			String url = page.getUrl().toString();
 			Html html = page.getHtml();
 			List<String> urllist = html.xpath("//div[@id='thumbs']/section/ul/li/figure/img/@data-src").all();
-			urllist.forEach(imgurl ->{
+			/*urllist.forEach(imgurl ->{
 				try {
 					mypic.download(imgurl, String.valueOf(System.currentTimeMillis()),"D:/cs/mypic" );
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			});
+			});*/
 			try {
 				Thread.sleep(3000);
 			} catch (InterruptedException e) {
