@@ -49,7 +49,7 @@ public class OrderingMealsService {
     public static final String COMPANY_ID = "246";
 
     @Scheduled(cron = "0 0 11 * * ?")
-    //@Scheduled(fixedRate = 3600*1000)
+    //@Scheduled(fixedRate = 1000)
     public void startOrderingMeals(){
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -57,6 +57,7 @@ public class OrderingMealsService {
         logger.info("开始点饭");
         User user = new User();
         user.setPhone(userName);
+        logger.info("开始点饭了---"+userName);
         user.setPassword(passWord);
         JSONObject loginJson = sendPostJsonRequest(LOGIN_URL,JSON.toJSON(user).toString(),JSONObject.class);
         logger.info("------账号登入成功------");
