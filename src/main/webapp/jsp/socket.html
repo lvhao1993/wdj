@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>  
+<html>  
+<head>  
+    <title>私人聊天室</title>  
+</head>  
+  
+<body>  
+Welcome<br/>  
+<input id="text" type="text"/>  
+<button onclick="send()">Send</button>  
+<button onclick="closeWebSocket()">Close</button>  
+<div id="message">  
+</div>  
+</body>  
+  
+<script type="text/javascript">  
+    var websocket = null;  
+  
+    if ('WebSocket' in window) {
+        websocket = new WebSocket("ws://10.134.6.33:8088/websocket");
+    }  
+    else {  
+        alert('Not support websocket')  
+    }  
+  
+    websocket.onerror = function () {
+        setMessageInnerHTML("error");  
+    };  
+  
+    websocket.onopen = function (event) {
+        setMessageInnerHTML("open");  
+    }  
+  
+    websocket.onmessage = function (event) {
+        setMessageInnerHTML(event.data);  
+    }  
+  
+    websocket.onclose = function () {
+        setMessageInnerHTML("close");  
+    }  
+  
+    window.onbeforeunload = function () {
+        websocket.close();  
+    }  
+  
+    function setMessageInnerHTML(innerHTML) {
+        document.getElementById('message').innerHTML += innerHTML + '<br/>';  
+    }  
+  
+    function closeWebSocket() {
+        websocket.close();  
+    }  
+  
+    function send() {
+        var message = document.getElementById('text').value;  
+        websocket.send(message);  
+    }  
+</script>  
+</html>  

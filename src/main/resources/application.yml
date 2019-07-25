@@ -1,6 +1,10 @@
 spring:
   application:
     name: wdj
+  mvc:
+    view:
+      prefix: /jsp/
+      suffix: .html
   datasource:
       name: wdj
       url: jdbc:oracle:thin:@10.128.134.134:1521:orcl
@@ -25,5 +29,8 @@ mybatis:
 server:
   port: 8088
 user:
-  userName: 18900000103
-  passWord: 15221993540
+  userName: 18900000101
+  passWord: 123456
+business:
+  index: 1
+  cookBookKey: 1521

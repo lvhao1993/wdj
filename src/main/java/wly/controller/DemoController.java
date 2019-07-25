@@ -2,6 +2,7 @@ package wly.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import wly.entity.FlieCopy;
 import wly.service.WdjFileService;
 
@@ -37,6 +38,14 @@ public class DemoController {
             return "fail";
         }
 
+    }
+
+
+
+    @RequestMapping(value ="/",method = RequestMethod.GET)
+    public ModelAndView helloJsp(){
+        ModelAndView mv=new ModelAndView("socket");
+        return mv;
     }
 
 }
