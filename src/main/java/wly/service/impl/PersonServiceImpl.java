@@ -20,7 +20,6 @@ import java.util.List;
  */
 @Service
 public class PersonServiceImpl implements PersonService{
-
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     @Resource
     private PersonMapper personMapper;
