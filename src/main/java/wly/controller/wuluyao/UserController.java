@@ -120,7 +120,7 @@ public class UserController {
     public ModelAndView toIndex1(){
         ModelAndView mv=new ModelAndView("user");
         return mv;
-    }
+}
 
 
     /**

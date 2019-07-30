@@ -72,6 +72,7 @@
         </set>
         WHERE ID = #{id,jdbcType=VARCHAR}
     </update>
+
     <select id="select" parameterType="wly.entity.lh.Person" resultMap="BaseResultMap">
       SELECT
       <include refid="Base_Column_List"/>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="wly.mapper.SyyPersonMapper">
+    <resultMap id="BaseResultMap" type="wly.entity.SyyPerson">
+        <result column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="NAME" property="name" jdbcType="VARCHAR"/>
+        <result column="AGE" property="age" jdbcType="INTEGER"/>
+        <result column="GENDER" property="gender" jdbcType="VARCHAR"/>
+        <result column="BIRTHDAY" property="birthday" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,
+        NAME,
+        AGE,
+        GENDER,
+        BIRTHDAY
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO SYY_PERSON (
+            ID,
+            NAME,
+            AGE,
+            GENDER,
+            BIRTHDAY
+        ) VALUES (
+            #{id,jdbcType=VARCHAR},
+            #{name,jdbcType=VARCHAR},
+            #{age,jdbcType=INTEGER},
+            #{gender,jdbcType=VARCHAR},
+            #{birthday,jdbcType=TIMESTAMP}
+        )
+    </insert>
+
+    <insert id="insertList">
+        INSERT INTO SYY_PERSON (
+            ID,
+            NAME,
+            AGE,
+            GENDER,
+            BIRTHDAY
+        )VALUES
+        <foreach collection="syyPersons" item="syyPerson" index="index" separator=",">
+            (
+            #{id,jdbcType=VARCHAR},
+            #{name,jdbcType=VARCHAR},
+            #{age,jdbcType=INTEGER},
+            #{gender,jdbcType=VARCHAR},
+            #{birthday,jdbcType=TIMESTAMP}
+            )
+        </foreach>
+    </insert>
+
+    <select id="queryall" resultMap="BaseResultMap" parameterType="wly.entity.SyyPerson">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM SYY_PERSON
+        WHERE 1=1
+        <if test="name !=null"> AND NAME =#{name,jdbcType=VARCHAR}</if>
+        <if test="age !=null"> AND AGE = #{age,jdbcType=INTEGER}</if>
+        <if test="gender != null"> AND GENDER = #{gender,jdbcType=VARCHAR}</if>
+        <if test="birthday != null">  AND BIRTHDAY = #{birthday,jdbcType=TIMESTAMP}</if>
+    </select>
+
+
+    <update id="updateall" parameterType="wly.entity.SyyPerson">
+        UPDATE SYY_PERSON
+        <set>
+            <if test="name != null"> NAME= #{name,jdbcType=VARCHAR},</if>
+            <if test="age != null"> AGE= #{age,jdbcType=INTEGER},</if>
+            <if test="gender != null"> GENDER= #{gender,jdbcType=VARCHAR},</if>
+            <if test="birthday != null"> BIRTHDAY= #{birthday,jdbcType=TIMESTAMP}</if>
+        </set>
+        WHERE ID = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <delete id="del" parameterType="wly.entity.SyyPerson">
+        DELETE FROM SYY_PERSON
+        WHERE ID = #{id,jdbcType=VARCHAR}
+    </delete>
+
+</mapper>

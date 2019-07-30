@@ -8,8 +8,8 @@ spring:
   datasource:
       name: wdj
       url: jdbc:oracle:thin:@10.128.134.134:1521:orcl
-      username: wdj_test
-      password: 123456
+      username: ibis_32_lh
+      password: 12345678
       driver-class-name: oracle.jdbc.driver.OracleDriver
  #redis基本参数配置
   redis:

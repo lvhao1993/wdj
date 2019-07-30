@@ -2,7 +2,6 @@ package wly.service;
 
 import wly.common.WdjResult;
 import wly.entity.SyyPerson;
-import wly.entity.lh.Person;
 
 import java.util.List;
 
@@ -16,12 +15,11 @@ import java.util.List;
 public interface SyyPersonService {
     WdjResult add(SyyPerson syyPerson);
 
-    WdjResult delete(int id);
+    WdjResult delete(String id);
 
     WdjResult update(SyyPerson syyPerson);
 
-    WdjResult<List<Person>> select(SyyPerson syyPerson);
-
-
-    WdjResult<List<SyyPerson>> querySyyPerson(SyyPerson person);
+    WdjResult<List<SyyPerson>> queryPerson(SyyPerson syyPerson);
 }
+
+

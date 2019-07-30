@@ -12,6 +12,17 @@
         年龄：<input  id="age" type="text" name="age"><br>
         <a  id="get_id" onclick="getPerson()">查询</a>><br>
     </form>
+
+    <table border="1">
+        <tr>
+            <td>ID</td><td>NAME</td><td>AGE</td><td>GENDER</td><td>BIRTHDAY</td>
+        </tr>
+        
+
+    </table>
+
+
+
 </body>
 
 
@@ -21,14 +32,11 @@
 
     function getPerson(){
         var name = document.getElementById('name').value;
-        var age = document.getElementById('age').value;
         var person = new Object() ;
         person.name = name;
-        person.age = parseInt(age);
-        alert(JSON.stringify(person))
         $.ajax({
             type:"post",
-            url:"../user/get",
+            url:"../syyperson/querySyyPerson",
             data:JSON.stringify(person),
             dataType:"json",//返回的
             contentType:"application/json",

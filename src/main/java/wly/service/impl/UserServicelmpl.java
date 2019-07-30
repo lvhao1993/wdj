@@ -92,6 +92,7 @@ public class UserServicelmpl implements UserService {
         }
 
     }
+
     /**
      * 随机生成UUID
      * @return
