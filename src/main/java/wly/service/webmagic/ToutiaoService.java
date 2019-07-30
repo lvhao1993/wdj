@@ -49,13 +49,14 @@ public class ToutiaoService implements PageProcessor {
 			String url = page.getUrl().toString();
 			Html html = page.getHtml();
 			List<String> urllist = html.xpath("//div[@id='thumbs']/section/ul/li/figure/img/@data-src").all();
-			/*urllist.forEach(imgurl ->{
-				try {
-					mypic.download(imgurl, String.valueOf(System.currentTimeMillis()),"D:/cs/mypic" );
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			});*/
+
+		for (String imgurl:urllist) {
+			try {
+				mypic.download(imgurl, String.valueOf(System.currentTimeMillis()),"D:/cs/mypic" );
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 			try {
 				Thread.sleep(3000);
 			} catch (InterruptedException e) {

@@ -5,11 +5,15 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import wly.common.WdjResult;
 import wly.entity.wuluyao.User;
 import wly.service.UserService;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @ClassName UserController
@@ -18,7 +22,7 @@ import wly.service.UserService;
  * @Date 2019/4/3 16:32
  * @Version 1.0
  **/
-@RestController
+@Controller
 @RequestMapping("/user")
 public class UserController {
 
@@ -106,5 +110,25 @@ public class UserController {
     public ModelAndView helloJsp(){
         ModelAndView mv=new ModelAndView("socket");
         return mv;
+    }
+
+    /**
+     * 跳转人员页面
+     * @return
+     */
+    @RequestMapping(value ="/index1",method = RequestMethod.GET)
+    public ModelAndView toIndex1(){
+        ModelAndView mv=new ModelAndView("user");
+        return mv;
+    }
+
+
+    /**
+     * 跳转人员页面
+     * @return
+     */
+    @RequestMapping(value ="/index2",method = RequestMethod.GET)
+    public String toIndex2(){
+        return "user";
     }
 }

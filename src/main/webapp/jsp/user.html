@@ -1,10 +1,67 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript" src="../js/jquery-1.9.1.js"></script>
+    <title>Insert title here</title>
 </head>
 <body>
-    <span> hello </span>
+
+    <form id="formdata">
+        姓名：<input id="name" type="text" name="name">
+        年龄：<input  id="age" type="text" name="age"><br>
+        <a  id="get_id" onclick="getPerson()">查询</a>><br>
+    </form>
 </body>
+
+
+<script type="text/javascript">
+
+
+
+    function getPerson(){
+        var name = document.getElementById('name').value;
+        var age = document.getElementById('age').value;
+        var person = new Object() ;
+        person.name = name;
+        person.age = parseInt(age);
+        alert(JSON.stringify(person))
+        $.ajax({
+            type:"post",
+            url:"../user/get",
+            data:JSON.stringify(person),
+            dataType:"json",//返回的
+            contentType:"application/json",
+            success:function(data) {
+                if(data.success) {
+                } else {
+                    alert(data.msg);//打印相应的错误信息
+                }
+            }
+        });
+
+    }
+
+
+    $(function() {
+        $("#gets_id").click(function() {
+            $.ajax({
+                type:"post",
+                url:"../user/get",
+                data:$("#formdata").serializeArray(),
+                dataType:"json",//返回的
+                contentType:"application/json",
+                success:function(data) {
+                    if(data.success) {
+                    } else {
+                        alert(data.msg);//打印相应的错误信息
+                    }
+                },
+                error:function(msg) {
+                    cosole.log(msg);
+                }
+            });
+        });
+    });
+</script>
 </html>

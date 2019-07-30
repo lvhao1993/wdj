@@ -74,8 +74,8 @@ public class OrderingMealsService {
         //我。李 吴 沈
         String[] userNames = {"18900000103","18900000024","18900000101","18564181265"};
         String[] passWords = {"15221993540","123456","123456","123456"};
-        String[] businessIndexs= {"2","2","1","2"};
-        String[] cookBookKeys = {"1002","1002","1521","1002"};
+        String[] businessIndexs= {"2","2","2","2"};
+        String[] cookBookKeys = {"1002","1002","1002","1002"};
         String[] emails = {"lvhao@cloudwalk.cn","liqiang@cloudwalk.cn","wuluyao@cloudwalk.cn","shenyunyun@cloudwalk.cn"};
         for (int i = 0; i < userNames.length; i++) {
 
